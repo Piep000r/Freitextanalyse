@@ -178,7 +178,7 @@ public class mainWindow {
 				if(verneinung.getSelection()){
 					counter = 0;
 					String verneint = "nicht " + Answer[j];
-					if(hitWords.length>1){
+					if(hitWords.length > 1){
 						if(!verneint.equalsIgnoreCase(hitWords[i-1] + hitWords[i])){
 							System.out.println("Das Schlagwort 'nicht " + Answer[j] + "' kommt nicht in dem Text vor!");
 							//counter++;
@@ -188,12 +188,14 @@ public class mainWindow {
 						}
 					}else{
 						String word = "nicht " + hitWords[i];
-						if(!verneint.equalsIgnoreCase(word)){
-							System.out.println("Das Schlagwort 'nicht " + Answer[j] + "' kommt nicht in dem Text vor!");
-							//counter++;
-						}else{
-							System.out.println("Das Schlagwort '" + Answer[j] + "' kommt in dem Text vor!");
-							counter++;
+						if(j>1){
+							if(!((Answer[j-1].equalsIgnoreCase("nicht")) &&(Answer[j].equalsIgnoreCase(hitWords[i])))){
+								System.out.println("Das Wort '" + Answer[j-1] + " " + Answer[j] + "' entspricht nicht dem verneinten Schlagwort '" + word + "'" );
+								//counter++;
+							}else{
+								System.out.println("Das Wort '" + Answer[j-1] + " " + Answer[j] + "' entspricht dem verneinten Schlagwort '" + word + "'");
+								counter++;
+							}
 						}
 					}
 				}
